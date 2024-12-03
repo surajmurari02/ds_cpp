@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  cpp-dev:
+    image: gcc:latest
+    container_name: dev_cpp
+    # ports:
+    #   - "11434:11434"
+    volumes:
+      - .:/usr/src/app  # Mount the current directory to /usr/src/app in the container
+    environment:
+      - TZ=Asia/Calcutta
+    # privileged: true
+    runtime: nvidia  # For non-Swarm setups
+    working_dir: /usr/src/app
+    restart: always
+    shm_size: '50g'
+    stdin_open: true
+    tty: true
+    command: bash
